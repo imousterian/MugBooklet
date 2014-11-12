@@ -1,0 +1,28 @@
+@import "themes/jquery.ui.smoothness";
+@import "jquery.ui.all";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html {
+    min-height:100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 60px;
+    height:100%;
+    overflow-x: hidden;
+}
+
+body > .container {
+    padding: 160px 15px 80px;
+}
+
+.dropdown-menu{
+    min-width: 100px;
+}
+
+b.caret-right {
+  border-top: 4px solid transparent;
+}
+

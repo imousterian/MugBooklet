@@ -6,8 +6,8 @@ gem 'rails', '4.1.1'
 gem 'pg'
 gem 'devise'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '~> 4.0.3'
-gem 'bootstrap-sass', '3.2.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -21,6 +21,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+# add jQuery UI components
+gem 'jquery-ui-sass-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 
 group :development, :test do

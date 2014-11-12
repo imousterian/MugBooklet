@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+
+    <%#= render :template => "contents/index" %>
+
+<% else %>
+
+    <%= render 'main_home' %>
+
+<% end %>
