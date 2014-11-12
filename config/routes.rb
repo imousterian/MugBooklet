@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-    devise_for :users
+
+    devise_for :users, :path => "accounts", :controllers => {registrations: 'registrations'}
+
+    resources :users do
+        member do
+            get :friends
+            # get :show
+        end
+    end
     root 'static_pages#home'
     match '/contact', to: "static_pages#contact", via: 'get'
     match '/sign_in_guest', to: "application#create_guest_user", via: 'get'
