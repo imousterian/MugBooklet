@@ -16,7 +16,7 @@ feature 'Home page' do
 
     end
 
-    scenario "User signs up successfully" do
+    scenario "When user signs up successfully" do
 
         visit root_path
         click_link "Sign up"
@@ -31,12 +31,39 @@ feature 'Home page' do
 
     end
 
+    scenario "When user is signed in" do
+        if_user_is_logged_in
+        and_user_has_friends
+        then_user_should_see_friends_feed
+            # user.feed.each do |item|
+            #     expect(page).to have_selector("li##{item.id}", text: item.content)
+            # end
+    end
+
     scenario "Contact links work" do
         visit root_path
         click_link "Contact"
         expect(page).to have_title(full_title('Contact'))
     end
 
+    def if_user_is_logged_in
+        @user = FactoryGirl.create(:user)
+        login_as(@user)
+        visit root_path
+    end
+
+    def and_user_has_friends
+        @friend = FactoryGirl.create(:user)
+        @user.friendships.create!(friend_id: @friend.id, status: 'accepted')
+        visit root_path
+        # FactoryGirl.create(:friendship, user_id: @user.id, friend_id: @friend.id, status: 'accepted')
+    end
+
+    def then_user_should_see_friends_feed
+        @user.current_friends.each do |friend|
+            expect(page).to have_selector("li##{friend.id}", text: friend.name)
+        end
+    end
 
 end
 

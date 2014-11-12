@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
     devise_for :users, :path => "accounts", :controllers => {registrations: 'registrations'}
-
+    # resources :users
     resources :users do
         member do
             get :friends
-            # get :show
+            # get :show, as: :show
         end
     end
     root 'static_pages#home'

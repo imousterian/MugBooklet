@@ -29,6 +29,8 @@ gem 'jquery-ui-sass-rails'
 
 group :development, :test do
     gem 'rspec-rails', '~> 3.0.0'
+    # rspec-its provides support for its calls in rspec 3
+    gem 'rspec-its'
 end
 
 group :test do
