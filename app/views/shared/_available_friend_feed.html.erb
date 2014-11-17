@@ -1,0 +1,5 @@
+<% if @available_friends.any? %>
+    <table class='table table-condensed available_friend_feed'>
+        <%= render partial: 'shared/available_friend', collection: @available_friends %>
+    </table>
+<% end %>

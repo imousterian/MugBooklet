@@ -3,8 +3,7 @@
     <%#= link_to gravatar_for(feed_item.user), feed_item.user %>
 
     <span class="user" >
-        <%#= link_to friend.user.name, friend.user %>
-        <%= link_to friend.name, friend %>
+        <%= link_to friend.name, name_path(friend.name) %>
     </span>
 
     <%#= render 'shared/content_timestamp', object: feed_item %>

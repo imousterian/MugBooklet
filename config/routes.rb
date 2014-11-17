@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
 
     devise_for :users, :path => "accounts", :controllers => {registrations: 'registrations'}
-    # resources :users
-    resources :users do
-        member do
-            get :friends
-            # get :show, as: :show
-        end
-    end
     root 'static_pages#home'
     match '/contact', to: "static_pages#contact", via: 'get'
     match '/sign_in_guest', to: "application#create_guest_user", via: 'get'
+
+    scope ":name" do
+        get '', to: 'users#show', as: 'name'
+        # get '/edit', to: 'users#edit', as: 'user_name_edit'
+    end
+
+    resources :users do
+        member do
+            get :friends
+        end
+    end
+    resources :friendships, only: [:create, :destroy, :update]
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

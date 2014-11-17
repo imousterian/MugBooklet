@@ -1,0 +1,4 @@
+<tr>
+    <td><strong><%= link_to available_friend.name, available_friend %></strong> </td>
+    <td> <%= render partial: 'users/request', locals: {available_friend: available_friend} %> </td>
+</tr>

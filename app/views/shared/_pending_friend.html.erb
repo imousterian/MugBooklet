@@ -1,0 +1,5 @@
+<tr>
+    <td><strong><%= link_to pending_friend.name, pending_friend %></strong> </td>
+    <td> <%= render partial: 'users/accept', locals: {pending_friend: pending_friend} %> </td>
+    <td> <%= render partial: 'users/reject', locals: {pending_friend: pending_friend} %> </td>
+</tr>

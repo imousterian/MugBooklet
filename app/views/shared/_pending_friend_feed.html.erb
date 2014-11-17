@@ -1,0 +1,5 @@
+<% if @pending_friends.any? %>
+    <table class='table table-condensed pending_friend_feed'>
+        <%= render partial: 'shared/pending_friend', collection: @pending_friends %>
+    </table>
+<% end %>

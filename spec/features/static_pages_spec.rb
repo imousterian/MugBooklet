@@ -22,25 +22,23 @@ feature 'Home page' do
         click_link "Sign up"
         expect(page).to have_title(full_title('Sign up'))
 
+        fill_in "user_name", with: "fidel"
         fill_in "user_email", with: "fidel@fidel.com"
         fill_in "user_password", with: "fidelfidel"
         fill_in "user_password_confirmation", with: "fidelfidel"
         click_button "Sign up"
         expect(page).to have_text("Welcome! You have signed up successfully.")
         expect(page).to have_text("Logged in as fidel@fidel.com")
-
     end
 
     scenario "When user is signed in" do
         if_user_is_logged_in
         and_user_has_friends
         then_user_should_see_friends_feed
-            # user.feed.each do |item|
-            #     expect(page).to have_selector("li##{item.id}", text: item.content)
-            # end
     end
 
     scenario "Contact links work" do
+        if_user_is_logged_in
         visit root_path
         click_link "Contact"
         expect(page).to have_title(full_title('Contact'))
@@ -56,11 +54,10 @@ feature 'Home page' do
         @friend = FactoryGirl.create(:user)
         @user.friendships.create!(friend_id: @friend.id, status: 'accepted')
         visit root_path
-        # FactoryGirl.create(:friendship, user_id: @user.id, friend_id: @friend.id, status: 'accepted')
     end
 
     def then_user_should_see_friends_feed
-        @user.current_friends.each do |friend|
+        @user.all_friends.each do |friend|
             expect(page).to have_selector("li##{friend.id}", text: friend.name)
         end
     end
