@@ -16,6 +16,8 @@ RSpec.describe User, :type => :model do
     it {should respond_to(:suggested_friends)}
     it {should respond_to(:friend_ids)}
     it {should respond_to(:friends_of_friends)}
+    it {should respond_to(:been_rejected_by)}
+    it {should respond_to(:been_approved_by)}
 
     it {should be_valid}
 
@@ -40,6 +42,15 @@ RSpec.describe User, :type => :model do
             end
             subject{@user}
             its(:active_friends) {should include(@potential_friend)}
+
+        end
+
+        describe "user rejecting a request" do
+            before do
+                @user.been_rejected_by(@potential_friend)
+            end
+            subject{@user}
+            its(:active_friends) {should_not include(@potential_friend)}
 
         end
     end

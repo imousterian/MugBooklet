@@ -67,4 +67,8 @@ class User < ActiveRecord::Base
         friendships.find_by(friend_id: friend.id).update_columns(status: 'accepted')
     end
 
+    def been_rejected_by(friend)
+        friendships.find_by(friend_id: friend.id).destroy
+    end
+
 end

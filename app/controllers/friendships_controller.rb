@@ -36,9 +36,11 @@ class FriendshipsController < ApplicationController
     end
 
     def destroy
-        @rejected_friend = User.find(params[:friend_id])
-        @friendship = Friendship.find(params[:id])
-        @friendship.destroy
+        # @rejected_friend = User.find(params[:friend_id])
+        # @friendship = Friendship.find(params[:id])
+        # @friendship.destroy
+        @rejected_friend = Friendship.find(params[:id]).user
+        @rejected_friend.been_rejected_by(current_user)
         respond_to do |format|
             format.html { redirect_to current_user }
             format.js
