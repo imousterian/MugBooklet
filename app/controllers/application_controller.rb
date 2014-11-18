@@ -8,7 +8,10 @@ class ApplicationController < ActionController::Base
 
     def create_guest_user
         u = User.new { |user| user.guest = true }
-        u.email = "guest_#{Time.now.to_i}#{rand(100)}@example.com"
+        id = "guest_#{Time.now.to_i}#{rand(100)}"
+        u.name = id
+
+        u.email = "#{id}@example.com"
         u.save!(:validate => false)
 
         sign_in(:user, u)
