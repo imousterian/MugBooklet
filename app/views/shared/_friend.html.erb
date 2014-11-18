@@ -1,13 +1,13 @@
-<li id="<%= friend.id %>" >
+<div class="content_wrapper">
+    <div class="user_content">
+        <div class="clearfix">
+            <div class="gravatar">
+                <%= link_to gravatar_for(friend, :size => 30), name_path(friend.name) %>
+            </div>
+            <div class="name_wrapper">
+                <%= link_to friend.name, name_path(friend.name) %>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <%#= link_to gravatar_for(feed_item.user), feed_item.user %>
-
-    <span class="user" >
-        <%= link_to friend.name, name_path(friend.name) %>
-    </span>
-
-    <%#= render 'shared/content_timestamp', object: feed_item %>
-
-    <%#= render 'shared/delete', object: feed_item %>
-
-</li>

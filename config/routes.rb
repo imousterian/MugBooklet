@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         end
     end
     resources :friendships, only: [:create, :destroy, :update]
+    resources :posts, only: [:create, :destroy, :edit]
 
 
 

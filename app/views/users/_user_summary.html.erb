@@ -1,0 +1,9 @@
+ <div>
+        <div class="gravatar">
+        <%= link_to gravatar_for(current_user), name_path(current_user.name) %>
+        <div class="name_wrapper" style="display: block; padding-left: 30px;">
+            <%= link_to current_user.name, name_path(current_user.name), :class => "welcome" %>
+            <%= link_to 'Edit profile', edit_user_registration_path %>
+        </div>
+     </div>
+</div>

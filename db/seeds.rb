@@ -9,9 +9,16 @@
 User.destroy_all
 Friendship.destroy_all
 
-User.create(name: 'fidel', email: 'fidel@fidel.com', password: 'fidelfidel', password_confirmation: 'fidelfidel')
+user1 = User.create(name: 'fidel', email: 'fidel@fidel.com', password: 'fidelfidel', password_confirmation: 'fidelfidel')
 (2..50).each do |i|
     User.create(name: "fidel#{i}", email: "fidel#{i}@fidel.com", password: 'fidelfidel', password_confirmation: 'fidelfidel')
+end
+
+users = User.all
+
+5.times do
+    content = Faker::Lorem.sentence(5)
+    users.each {|user| user.posts.create!(content: content)}
 end
 
 # (2..5).each do |i|

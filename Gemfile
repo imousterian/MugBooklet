@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-ui-sass-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 
+gem "faker", "~> 1.4.3"
+
 group :development, :test do
     gem 'rspec-rails', '~> 3.0.0'
     # rspec-its provides support for its calls in rspec 3
@@ -44,7 +46,7 @@ group :test do
     gem 'factory_girl_rails'
     # for checking test coverage
     gem 'simplecov', :require => false
-    gem "faker", "~> 1.4.3"
+
     gem "launchy", "~> 2.4.2"
     gem 'shoulda-matchers', require: false
 end

@@ -97,6 +97,23 @@ RSpec.describe User, :type => :model do
         end
 
     end
+
+    describe "user friend's posts" do
+        let!(:post_to_follow) {FactoryGirl.create(:post, user: FactoryGirl.create(:user))}
+        let!(:new_friend) {FactoryGirl.create(:user)}
+        before do
+            @user.save
+            @user.request_friendship(new_friend)
+            @user.been_approved_by(new_friend)
+            3.times {new_friend.posts.create!(content: "Lorem")}
+        end
+        its(:feed) do
+            new_friend.posts.each do |p|
+                should include(p)
+            end
+        end
+    end
+
 end
 
 

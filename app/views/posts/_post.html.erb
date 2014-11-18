@@ -1,0 +1,18 @@
+<div class="content_wrapper mbm mbm2 content_wrapper_color">
+    <div class="user_content">
+        <div class="clearfix _5x46">
+            <div class="gravatar">
+                <%= link_to gravatar_for(@user, :size => 30), name_path(@user.name) %>
+            </div>
+            <div class="user_name">
+                <%= link_to @user.name, name_path(@user.name) %>
+            </div>
+        </div>
+        <div >
+            <%= post.content %>
+        </div>
+        <div class="comment_section bottom_color">
+            <li class="user_comment"></li>
+        </div>
+    </div>
+</div>

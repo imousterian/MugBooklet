@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
     # friendly_id :name, use: :slugged
     # friendly_id :slugged_candidates, use: :slugged
-
+    has_many :posts, :dependent => :destroy
     has_many :friendships, :dependent => :destroy
 
     has_many :inactive_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :dependent => :destroy
@@ -69,6 +69,16 @@ class User < ActiveRecord::Base
 
     def been_rejected_by(friend)
         friendships.find_by(friend_id: friend.id).destroy
+    end
+
+    # def self.test
+    #     followed_user_ids = "SELECT friend_id FROM relationships WHERE user_id = :user_id"
+    #     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", followed_user_ids: followed_user_ids, user_id: self)
+    # end
+
+    def feed
+        # Post.where(user_id: [friend_ids])
+        Post.from_friends_of(self)
     end
 
 end

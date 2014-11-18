@@ -1,0 +1,10 @@
+<%= form_for @post do |f| %>
+
+    <%= f.text_area :content, placeholder: "What's on your mind?", class: "content_wrapper mbm post_form" %>
+
+    <div class="bottom_color">
+        <%= f.submit "Post", class: "btn btn-xs btn-primary btn-loc" %>
+        <div style="clear:both;"></div>
+    </div>
+
+<% end %>
