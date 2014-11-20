@@ -1,0 +1,12 @@
+<%= form_for current_user.comments.build, remote: true do |f| %>
+
+    <%= f.text_area :body, placeholder: "Write a comment...", class: "content_wrapper mbm post_form" %>
+    <%= f.hidden_field :post_id, value: feed_item.id %>
+
+    <div class="bottom_color">
+        <%= f.submit "Comment", class: "btn btn-xs btn-primary btn-loc" %>
+        <div style="clear:both;"></div>
+    </div>
+
+<% end %>
+

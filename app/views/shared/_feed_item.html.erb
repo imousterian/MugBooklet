@@ -8,11 +8,16 @@
                 <%= link_to feed_item.user.name, name_path(feed_item.user.name) %>
             </div>
         </div>
-        <div >
+        <div>
             <%= feed_item.content %>
         </div>
-        <div class="comment_section bottom_color">
-            <li class="user_comment"></li>
+        <div class="comment_section bottom_color" >
+            <div id="comment_feed_<%=feed_item.id %>" >
+                <%= render partial: feed_item.comments, locals: {:feed_item => feed_item} %>
+            </div>
+            <div id="comment_form_<%=feed_item.id %>">
+                <%= render partial: 'shared/comment_form', locals: {:feed_item => feed_item} %>
+            </div>
         </div>
     </div>
 </div>

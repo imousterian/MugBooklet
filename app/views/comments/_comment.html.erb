@@ -1,0 +1,8 @@
+<div class="clearfix _5x46" style="padding-bottom: 0px;">
+    <div class="gravatar" style="padding-left:10px; padding-bottom: 5px; padding-top:5px;">
+        <%= link_to gravatar_for(comment.user, :size => 30), name_path(comment.user.name) %>
+    </div>
+    <div class="user_comment user_name">
+        <%= comment.body %>
+    </div>
+</div>
