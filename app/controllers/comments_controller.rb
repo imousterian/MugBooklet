@@ -1,5 +1,22 @@
 class CommentsController < ApplicationController
 
+    def new
+        puts "parameters: #{params}"
+        @post = Post.find_by(:id => params[:comment][:post_id])
+        respond_to do |format|
+            # format.html { redirect_to root_url }
+            format.js
+        end
+    end
+
+    def add
+        @post = Post.find_by(:id => params[:id])
+        respond_to do |format|
+            # format.html { redirect_to root_url }
+            format.js
+        end
+    end
+
     def create
         @comment = current_user.comments.build(comment_params)
         @post = Post.find_by(:id => params[:comment][:post_id])

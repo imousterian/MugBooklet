@@ -11,7 +11,14 @@
         <div>
             <%= feed_item.content %>
         </div>
+        <div class="like_comment_section">
+            <%= link_to 'Like', like_path(feed_item.id), remote: true %>
+            <%= link_to 'Comment', add_path(feed_item.id), remote: true %>
+        </div>
         <div class="comment_section bottom_color" >
+            <div id="like_feed_<%=feed_item.id %>">
+                2 people like this.
+            </div>
             <div id="comment_feed_<%=feed_item.id %>" >
                 <%= render partial: feed_item.comments, locals: {:feed_item => feed_item} %>
             </div>

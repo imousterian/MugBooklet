@@ -20,7 +20,8 @@ Rails.application.routes.draw do
         # resources :comments
     end
     resources :comments
-
+    match '/add/:id', to: "comments#add", via: 'get', as: :add
+    match '/like/:id', to: "posts#like", via: 'get', as: :like
 
 
   # The priority is based upon order of creation: first created -> highest priority.

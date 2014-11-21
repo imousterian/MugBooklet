@@ -1,0 +1,1 @@
+$("#comment_feed_<%= @post.id %>").prepend("<%= escape_javascript(render partial: 'shared/comment_form', locals: {:feed_item => @post}) %>");
