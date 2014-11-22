@@ -1,0 +1,7 @@
+<% if not @likes.nil? %>
+    <table class="commenter_table">
+        <% @likes.each do |i| %>
+            <tr><td><%= i.user.name %></td></tr>
+        <% end %>
+    </table>
+<% end %>

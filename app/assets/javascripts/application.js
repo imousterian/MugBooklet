@@ -16,3 +16,10 @@
 //= require bootstrap/dropdown
 //= require turbolinks
 //= require_tree .
+$(function()
+{
+    $('.hover_over').mouseenter(function(){
+        $.ajax($(this).data('url'))
+            .done(function(){ })
+    });
+});

@@ -1,23 +1,27 @@
 <div class="content_wrapper mbm mbm2 content_wrapper_color">
     <div class="user_content">
-        <div class="clearfix _5x46">
-            <div class="gravatar">
-                <%= link_to gravatar_for(feed_item.user, :size => 30), name_path(feed_item.user.name) %>
+        <div id="user_content_<%=feed_item.id %>">
+            <div class="clearfix _5x46">
+                <div class="gravatar">
+                    <%= link_to gravatar_for(feed_item.user, :size => 30), name_path(feed_item.user.name) %>
+                </div>
+                <div class="user_name">
+                    <%= link_to feed_item.user.name, name_path(feed_item.user.name) %>
+                </div>
             </div>
-            <div class="user_name">
-                <%= link_to feed_item.user.name, name_path(feed_item.user.name) %>
+            <div class="feed_item_content">
+                <%= feed_item.content %>
             </div>
-        </div>
-        <div>
-            <%= feed_item.content %>
-        </div>
-        <div class="like_comment_section">
-            <%= link_to 'Like', like_path(feed_item.id), remote: true %>
-            <%= link_to 'Comment', add_path(feed_item.id), remote: true %>
+            <div class="like_comment_section">
+                <div id = "like_form_<%=feed_item.id %>">
+                    <%= render partial: 'users/like_unlike_wrapper', locals: {feed_item: feed_item} %>
+                </div>
+                <%#= link_to 'Comment', add_path(feed_item.id), remote: true %>
+            </div>
         </div>
         <div class="comment_section bottom_color" >
-            <div id="like_feed_<%=feed_item.id %>">
-                2 people like this.
+            <div id="like_feed_<%=feed_item.id %>" class="like_feed">
+                <%= render partial: 'shared/count_likes', locals: {:feed_item => feed_item} %>
             </div>
             <div id="comment_feed_<%=feed_item.id %>" >
                 <%= render partial: feed_item.comments, locals: {:feed_item => feed_item} %>

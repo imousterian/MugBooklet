@@ -1,0 +1,5 @@
+<% if current_user.liking?(feed_item) %>
+    <%= render partial: 'users/unlike', locals: {feed_item: feed_item} %>
+<% else %>
+    <%= render partial: 'users/like', locals: {feed_item: feed_item} %>
+<% end %>

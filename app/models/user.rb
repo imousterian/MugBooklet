@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     has_many :posts, :dependent => :destroy
     has_many :comments, :dependent => :destroy
     has_many :friendships, :dependent => :destroy
+    has_many :likes, :dependent => :destroy
 
     has_many :inactive_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :dependent => :destroy
 
@@ -70,6 +71,18 @@ class User < ActiveRecord::Base
 
     def been_rejected_by(friend)
         friendships.find_by(friend_id: friend.id).destroy
+    end
+
+    def like(post)
+        likes.create!(post_id: post.id)
+    end
+
+    def unlike(post)
+        likes.find_by(post_id: post.id).destroy
+    end
+
+    def liking?(post)
+        likes.find_by(post_id: post.id)
     end
 
     def feed

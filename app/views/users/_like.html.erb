@@ -1,0 +1,4 @@
+<%= form_for(current_user.likes.build(:post_id => feed_item.id), remote: true) do |f| %>
+    <%= f.hidden_field :post_id %>
+    <%= f.submit "Like", class: "fake_button" %>
+<% end %>

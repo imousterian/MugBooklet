@@ -10,13 +10,6 @@ class PostsController < ApplicationController
         end
     end
 
-    def like
-        @post = Post.find_by(:id => params[:id])
-        respond_to do |format|
-            format.js
-        end
-    end
-
     private
         def post_params
             params.require(:post).permit(:content)

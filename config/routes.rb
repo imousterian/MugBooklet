@@ -16,12 +16,13 @@ Rails.application.routes.draw do
         end
     end
     resources :friendships, only: [:create, :destroy, :update]
-    resources :posts, only: [:create, :destroy, :edit] do
-        # resources :comments
-    end
+    resources :posts, only: [:create, :destroy, :edit]
     resources :comments
-    match '/add/:id', to: "comments#add", via: 'get', as: :add
-    match '/like/:id', to: "posts#like", via: 'get', as: :like
+    resources :likes, only: [:create, :destroy]
+    match '/likes/:id', to: "likes#selected_index", via: 'get', as: :showlikes
+
+    # match '/add/:id', to: "comments#add", via: 'get', as: :add
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

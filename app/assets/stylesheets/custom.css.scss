@@ -144,3 +144,46 @@ a{
         color: blue;
     }
 }
+.fake_button{
+     background:none!important;
+     border:none;
+     padding:0!important;
+     cursor: pointer;
+}
+
+.like_feed{
+    width: 100%;
+    height: 18px;
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+.area {
+    position: relative;
+    color: #0F0;
+    font-weight: bold;
+}
+
+.fixed {
+    position: absolute;
+    border: 1px solid black;
+    padding: 6px;
+    z-index: 100px;
+    // background-color: #535353;
+    color: #fff;
+    display: none;
+}
+
+.commenter_counter{
+    // background: green;
+}
+
+.hover_over{
+    float:left;
+}
+
+.underlined{
+    text-decoration: underline;
+}

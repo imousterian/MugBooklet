@@ -1,0 +1,15 @@
+$('#hover_item_<%=@post.id%>').html("<%=escape_javascript(render partial: 'users/commenters' )%>").show();
+$('#hover_item_<%=@post.id%>').css("background-color","#535353");
+var a = $('#user_content_<%=@post.id%>').height();
+var b = $('#hover_item_<%=@post.id%>').height();
+var tops = (a - b + 15);
+$('#hover_item_<%=@post.id%>').css("top",tops+"px");
+
+$('.hover_over').mouseenter(function(){
+    $(this).css("text-decoration","underline");
+});
+
+$('.hover_over').mouseleave(function(){
+    $(this).css("text-decoration","none");
+    $('#hover_item_<%=@post.id%>').html("<%=escape_javascript(render partial: 'users/commenters' )%>").hide();
+});

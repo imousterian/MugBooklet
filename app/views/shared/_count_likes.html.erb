@@ -1,0 +1,15 @@
+<% if feed_item.likes.count == 1 %>
+    <%= link_to feed_item.likes.first.user.name, name_path(current_user.name) %> likes this
+<% end %>
+
+<% if feed_item.likes.count > 1 %>
+
+    <div id="hover_item_<%=feed_item.id%>" class="fixed" data-remote="true"></div>
+    <div class="commenter_counter">
+        <div data-remote="true" id="index_<%=feed_item.id%>" data-idd="<%= feed_item.id %>"
+                class="hover_over" data-url="<%= url_for(action: 'selected_index', controller: 'likes', id: feed_item.id) %>">
+            <%= pluralize(feed_item.likes.count, 'person') %>
+        </div>
+        <div style="float:left;">&nbsp;like this</div>
+    </div>
+<% end %>
