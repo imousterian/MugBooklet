@@ -29,6 +29,22 @@ end
     end
 end
 
+
+
+users.each do |user|
+    20.times do
+        id = rand(Post.count)
+        if id != 0
+            sampled_post = Post.find(id)
+            if user.liking?(sampled_post)
+            else
+                user.like(sampled_post)
+            end
+        end
+    end
+end
+
+
 # (2..5).each do |i|
     # Friendship.create(user_id: 1, friend_id: 2, status: 'requested')
     # Friendship.create(user_id: 2, friend_id: 3, status: 'requested')
