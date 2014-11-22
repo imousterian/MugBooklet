@@ -1,0 +1,3 @@
+$(".user_post_form").html("<%= escape_javascript(render partial: 'shared/post_form', locals: {:feed_item => @post}) %>");
+
+$(".user_post_feed").prepend("<%= escape_javascript(render partial: 'posts/post', locals: {:post => @post}) %>");

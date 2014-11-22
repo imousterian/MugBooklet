@@ -4,6 +4,7 @@ class UsersController < ApplicationController
         # @user = User.find(params[:id])
         @user = User.find_by name: params[:name]
         @posts = @user.posts.page(params[:page])
+        @post = @user.posts.build
         # will be getting user's post here.
         # @posts = @user.posts.paginate(page: params[:page])
     end
