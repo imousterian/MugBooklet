@@ -1,11 +1,12 @@
-<div class="main_logo container-fluid" style="background-color:#fff;"></div>
-
-<div class = "center">
-
-    <h1> Welcome! </h1>
-
-    <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-md btn-primary", id: "sign_up_button" %>
-
-    <%= link_to "Guest Login", sign_in_guest_path, class: "btn btn-md btn-primary", id: "sign_up_button", "data-no-turbolink" => true %>
-
+<div class="row">
+    <div class="col-sm-8">
+        <div class="welcome-page">
+            <h1> Welcome! </h1>
+            <%= link_to "Guest Login", sign_in_guest_path, class: "btn btn-md btn-primary", id: "sign_up_button", "data-no-turbolink" => true %>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <%= render 'devise/registrations/new' %>
+    </div>
 </div>
+

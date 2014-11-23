@@ -1,12 +1,18 @@
-<%= form_for current_user.comments.build, remote: true do |f| %>
-
-    <%= f.text_area :body, placeholder: "Write a comment...", class: "content_wrapper mbm post_form" %>
-    <%= f.hidden_field :post_id, value: feed_item.id %>
-
-    <div class="bottom_color">
-        <%= f.submit "Comment", class: "btn btn-xs btn-primary btn-loc" %>
-        <div style="clear:both;"></div>
+<div class="clearfix _5x46" style="padding-bottom: 0px;">
+    <div class="gravatar" style="padding-left:10px; padding-bottom: 5px; padding-top:5px;">
+        <%= link_to gravatar_for(current_user, :size => 30), name_path(current_user.name) %>
     </div>
+    <div class="user_comment user_name" style="width:85%;">
+        <%= form_for current_user.comments.build, remote: true do |f| %>
 
-<% end %>
+            <%= f.text_area :body, placeholder: "Write a comment...", class: "content_wrapper2 mbm comment_form form-control2" %>
+            <%= f.hidden_field :post_id, value: feed_item.id %>
 
+            <div class="bottom_color">
+                <%= f.submit "Comment", class: "btn btn-xs btn-primary btn-loc" %>
+                <div style="clear:both;"></div>
+            </div>
+
+        <% end %>
+    </div>
+</div>

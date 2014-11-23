@@ -1,6 +1,6 @@
 <%= form_for current_user.posts.build, remote: true do |f| %>
 
-    <%= f.text_area :content, placeholder: "What's on your mind?", class: "content_wrapper mbm post_form" %>
+    <%= f.text_area :content, placeholder: "What's on your mind?", class: "content_wrapper mbm post_form form-control" %>
 
     <div class="bottom_color">
         <%= f.submit "Post", class: "btn btn-xs btn-primary btn-loc" %>

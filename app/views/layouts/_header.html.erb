@@ -8,14 +8,14 @@
                     <a class="navbar-brand" href="#">Logged in as <%= current_user.email %></a>
                 <% end %>
             <% else %>
-                <%= link_to "Mug Book", root_path, class: "navbar-brand" %>
+                <%= link_to "MugBooklet", root_path, class: "navbar-brand" %>
             <% end %>
         </div>
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Contact", contact_path %></li>
+                <!-- <li><%#= link_to "Home", root_path %></li> -->
+                <!-- <li><%#= link_to "Contact", contact_path %></li> -->
                 <% if user_signed_in? %>
                     <li><%= link_to "Friends", "#my-modal", "data-toggle" => "modal" %></li>
                     <li class="dropdown">
@@ -30,8 +30,9 @@
                         </ul>
                     </li>
                 <% else %>
-                    <li><%= link_to "Login", new_user_session_path %></li>
-                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                    <%= render 'devise/sessions/new' %>
+                    <!-- <li><%#= link_to "Login", new_user_session_path %></li> -->
+                    <!-- <li><%#= link_to "Sign up", new_user_registration_path %></li> -->
                 <% end %>
             </ul>
         </div><!--/.nav-collapse -->
