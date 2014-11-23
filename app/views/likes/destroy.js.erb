@@ -1,2 +1,7 @@
 $("#like_feed_<%=@post.id%>").html("<%= escape_javascript(render partial: 'shared/count_likes', locals: {:feed_item => @post}) %>");
 $("#like_form_<%=@post.id%>").html("<%= escape_javascript(render partial: 'users/like_unlike_wrapper', locals: {:feed_item => @post}) %>");
+
+$('.hover_over').mouseenter(function(){
+    $.ajax($(this).data('url'))
+        .done(function(){})
+});
