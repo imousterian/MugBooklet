@@ -53,7 +53,12 @@ class User < ActiveRecord::Base
         if friends_of_friends.empty?
             User.where.not(id: [friend_ids]).where.not(id: self)
         else
-            User.where(id: [friends_of_friends])
+            ids = pending_friends.pluck(:id)
+            if !ids.empty?
+                User.where(id: [friends_of_friends]).where.not(id: [ids])
+            else
+                User.where(id: [friends_of_friends])
+            end
         end
     end
 
