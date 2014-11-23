@@ -1,5 +1,9 @@
 <% if feed_item.likes.count == 1 %>
-    <%= link_to feed_item.likes.first.user.name, name_path(current_user.name) %> likes this
+    <div class="commenter_counter" style="float:left;">
+        <div>
+            <%= link_to feed_item.likes.first.user.name, name_path(current_user.name) %> likes this.
+        </div>
+    </div>
 <% end %>
 
 <% if feed_item.likes.count > 1 %>

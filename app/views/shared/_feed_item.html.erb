@@ -22,6 +22,7 @@
         <div class="comment_section bottom_color" >
             <div id="like_feed_<%=feed_item.id %>" class="like_feed">
                 <%= render partial: 'shared/count_likes', locals: {:feed_item => feed_item} %>
+                <div class="border"></div>
             </div>
             <div id="comment_feed_<%=feed_item.id %>" >
                 <%= render partial: feed_item.comments, locals: {:feed_item => feed_item} %>
