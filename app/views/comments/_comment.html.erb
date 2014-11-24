@@ -2,7 +2,7 @@
     <div class="gravatar" style="padding-left:10px; padding-bottom: 5px; padding-top:5px;">
         <%= link_to gravatar_for(comment.user, :size => 30), name_path(comment.user.name) %>
     </div>
-    <div class="user_comment user_name" style="width:85%;">
+    <div class="user_comment user_name comment_width">
         <%= comment.body %>
     </div>
 </div>

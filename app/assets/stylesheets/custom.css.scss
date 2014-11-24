@@ -44,25 +44,52 @@ a{
 }
 
 .dropdown-menu{
-    min-width: 100px;
+    min-width: 60px;
+    max-width: 92px;
+    font-size: 12px;
 }
-
-// .textarea, input{
-//     border-radius: 3px;
-//     border-color: rgba(229, 103, 23, 0.8);
-// }
 
 b.caret-right {
   border-top: 4px solid transparent;
 }
 
+.navbar{
+    background: #3b5998
+}
+
 .navbar-brand{
-    line-height: 40px;
+    line-height: 10px;
+}
+.corner{
+     line-height: 20px;
 }
 .navbar-default .navbar-brand {
   color: #fff;
-  font-size: 40px;
+  font-size: 12px;
 }
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand.logo {
+  font-size: 40px;
+  line-height: 40px;
+}
+
 
 .navbar-collapse{
     color: #fff;
@@ -166,9 +193,7 @@ b.caret-right {
     background-color: #3b5998;
 }
 
-.navbar{
-    background: #3b5998
-}
+
 
 .textarea{
     border: 0px;
@@ -262,4 +287,13 @@ div {
 
 .form-signin{
     padding-right: 10px;
+}
+
+.right-column{
+    font-size:12px;
+    float:right;
+}
+
+.comment_width{
+    width: 85%;
 }

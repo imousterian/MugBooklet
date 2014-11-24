@@ -1,24 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row" >
-    <div class="col-sm-2" style="padding:0;">
+    <div class="col-sm-2">
         <h3> User info here </h3>
         <%= render 'users/user_summary' %>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-7">
         <h3> Timeline feed here </h3>
-        <div class="content_wrapper mbm post_form2">
-            <div class="content_wrapper mbm post_form2 user_post_form">
-                <%= render 'shared/post_form', locals: {:feed_item => @post} %>
-            </div>
-            <div class="user_post_feed">
-                <% if @user.posts.any? %>
-                    <%= render partial: 'posts/post', collection: @posts %>
-                    <%#= paginate @posts %>
-                <% end %>
-            </div>
+        <div class="content_wrapper mbm post_form2 user_post_form">
+            <%= render 'shared/post_form', locals: {:feed_item => @post} %>
+        </div>
+        <div class="user_post_feed">
+            <% if @user.posts.any? %>
+                <%= render partial: 'posts/post', collection: @posts %>
+                <%#= paginate @posts %>
+            <% end %>
         </div>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-2 right-column">
         <h3> User friends </h3>
         <%= render 'shared/friend_feed' %>
     </div>
