@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def show
         # @user = User.find(params[:id])
-        @user = User.find_by name: params[:name]
+        @user = User.friendly.find(params[:id])
         @posts = @user.posts.page(params[:page])
         @post = @user.posts.build
         @friends = @user.all_friends

@@ -226,6 +226,7 @@ b.caret-right {
      border:none;
      padding:0!important;
      cursor: pointer;
+     color: #6d84b4;
 }
 
 .like_feed{
@@ -266,6 +267,7 @@ b.caret-right {
 
 .hover_over{
     float:left;
+    color: #6d84b4;
 }
 
 .underlined{
@@ -296,4 +298,11 @@ div {
 
 .comment_width{
     width: 85%;
+}
+
+.feed_item_content{
+    padding-top: 5px;
+}
+.menu_icon{
+    padding-bottom: 4px;
 }

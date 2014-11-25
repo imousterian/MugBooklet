@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
-    # extend FriendlyId
+    extend FriendlyId
     devise :database_authenticatable, :registerable,
             :recoverable, :rememberable, :trackable, :validatable
 
-    # friendly_id :name, use: :slugged
-    # friendly_id :slugged_candidates, use: :slugged
+    friendly_id :name, use: :slugged
+    friendly_id :slugged_candidates, use: :slugged
     has_many :posts, :dependent => :destroy
     has_many :comments, :dependent => :destroy
     has_many :friendships, :dependent => :destroy
@@ -32,8 +32,18 @@ class User < ActiveRecord::Base
 
     paginates_per 12
 
-    # def slugged_candidates
-    #     [ :name ]
+    def slugged_candidates
+        [ :name ]
+    end
+
+    # def slug
+    #     name.downcase.gsub(" ", "-")
+    # end
+
+    # def to_param
+    #     puts "params #{slug}"
+    #     "#{id}-#{slug}"
+    #     slug
     # end
 
     def all_friends

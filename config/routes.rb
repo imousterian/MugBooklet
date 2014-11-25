@@ -5,16 +5,12 @@ Rails.application.routes.draw do
     match '/contact', to: "static_pages#contact", via: 'get'
     match '/sign_in_guest', to: "application#create_guest_user", via: 'get'
 
-    scope ":name" do
-        get '', to: 'users#show', as: 'name'
-        # get '/edit', to: 'users#edit', as: 'user_name_edit'
-    end
-
-    resources :users do
+    resources :users, path: '/' do
         member do
             get :friends
         end
     end
+
     resources :friendships, only: [:create, :destroy, :update]
     resources :posts, only: [:create, :destroy, :edit]
     resources :comments

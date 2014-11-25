@@ -1,6 +1,6 @@
 <div class="clearfix _5x46" style="padding-bottom: 0px;">
     <div class="gravatar" style="padding-left:10px; padding-bottom: 5px; padding-top:5px;">
-        <%= link_to gravatar_for(current_user, :size => 30), name_path(current_user.name) %>
+        <%= link_to gravatar_for(current_user, :size => 30), user_path(current_user) %>
     </div>
     <div class="user_comment user_name comment_width">
         <%= form_for current_user.comments.build, remote: true do |f| %>

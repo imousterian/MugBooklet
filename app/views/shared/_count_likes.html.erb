@@ -1,7 +1,7 @@
 <% if feed_item.likes.count == 1 %>
     <div class="commenter_counter" style="float:left;">
         <div>
-            <%= link_to feed_item.likes.first.user.name, name_path(current_user.name) %> likes this.
+            <%= link_to feed_item.likes.first.user.name, user_path(current_user) %> likes this.
         </div>
     </div>
 <% end %>
@@ -12,7 +12,7 @@
     <div class="commenter_counter">
         <div data-remote="true" id="index_<%=feed_item.id%>" data-idd="<%= feed_item.id %>"
                 class="hover_over" data-url="<%= url_for(action: 'selected_index', controller: 'likes', id: feed_item.id) %>">
-            <%= pluralize(feed_item.likes.count, 'person') %>
+            <%= image_tag("FB-ThumbsUp_29.png", height: '15', class: "menu_icon") %>&nbsp;<%= pluralize(feed_item.likes.count, 'person') %>
         </div>
         <div style="float:left;">&nbsp;like this</div>
     </div>

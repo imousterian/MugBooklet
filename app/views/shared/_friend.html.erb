@@ -2,10 +2,10 @@
     <div class="user_content">
         <div class="clearfix">
             <div class="gravatar">
-                <%= link_to gravatar_for(friend, :size => 30), name_path(friend.name) %>
+                <%= link_to gravatar_for(friend, :size => 30), user_path(friend) %>
             </div>
             <div class="name_wrapper">
-                <%= link_to friend.name, name_path(friend.name) %>
+                <%= link_to friend.name, user_path(friend) %>
             </div>
         </div>
     </div>
