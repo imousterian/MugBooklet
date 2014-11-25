@@ -22,15 +22,6 @@ users = User.all
     users.each {|user| user.posts.create!(content: ("user " +  user.id.to_s + " " + content))}
 end
 
-2.times do
-    body = Faker::Lorem.sentence(5)
-    users.each do |user|
-        user.posts.each {|post| post.comments.create!(body: ("user " + user.id.to_s + " post " + post.id.to_s + " ") + body, user_id: user.id) }
-    end
-end
-
-
-
 users.each do |user|
     20.times do
         id = rand(Post.count)
@@ -39,6 +30,8 @@ users.each do |user|
             if user.liking?(sampled_post)
             else
                 user.like(sampled_post)
+                body = Faker::Lorem.sentence(5)
+                sampled_post.comments.create!(body: ("user " + user.id.to_s + " post " + sampled_post.id.to_s + " ") + body, user_id: user.id)
             end
         end
     end
