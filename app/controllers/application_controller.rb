@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
     before_filter :authenticate_user!, except: [:create_guest_user]
     before_action :show_current_friends, :show_potential_friends, :show_pending_friends
 
+    def authenticate_user!
+        if user_signed_in?
+            super
+        else
+            redirect_to root_url
+        end
+    end
+
     def create_guest_user
         u = User.new { |user| user.guest = true }
         id = "guest_#{Time.now.to_i}#{rand(100)}"

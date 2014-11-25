@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     has_many :requested_friendships, -> {where(friendships: {status: 'requested'})},
                 :through => :inactive_friendships, source: :user
 
-    validates_presence_of :name, unique: true
+    validates_presence_of :name, unique: true, length: {:maximum => 25}
 
     paginates_per 12
 
