@@ -1,3 +1,3 @@
 $("#my-modal").modal("hide");
-$(".friend_feed").append("<%= escape_javascript(render partial: 'shared/friend', locals: {:friend => @accepted_friend} ) %>");
+$("#friend_feed_<%=current_user.id%>").append("<%= escape_javascript(render partial: 'shared/friend', locals: {:friend => @accepted_friend} ) %>");
 $(".pending_friend_feed").html("<%= escape_javascript(render partial: 'shared/pending_friend_feed') %>");

@@ -68,6 +68,18 @@ Friendship.create(user_id: 45, friend_id: 1, status: 'requested')
 Friendship.create(user_id: 44, friend_id: 1, status: 'requested')
 Friendship.create(user_id: 22, friend_id: 1, status: 'requested')
 
+Friendship.create(user_id: 50, friend_id: 1, status: 'requested')
+Friendship.create(user_id: 49, friend_id: 1, status: 'requested')
+Friendship.create(user_id: 48, friend_id: 1, status: 'requested')
+
+Friendship.create(user_id: 35, friend_id: 1, status: 'requested')
+Friendship.create(user_id: 34, friend_id: 1, status: 'requested')
+Friendship.create(user_id: 33, friend_id: 1, status: 'requested')
+
+Friendship.create(user_id: 21, friend_id: 1, status: 'requested')
+Friendship.create(user_id: 20, friend_id: 1, status: 'requested')
+Friendship.create(user_id: 19, friend_id: 1, status: 'requested')
+
 # I requsted
 # (5..24).each do |i|
 #     Friendship.create(user_id: 1, friend_id: i, status: 'requested')

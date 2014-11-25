@@ -36,16 +36,6 @@ class User < ActiveRecord::Base
         [ :name ]
     end
 
-    # def slug
-    #     name.downcase.gsub(" ", "-")
-    # end
-
-    # def to_param
-    #     puts "params #{slug}"
-    #     "#{id}-#{slug}"
-    #     slug
-    # end
-
     def all_friends
         active_friends | inactive_friends
     end

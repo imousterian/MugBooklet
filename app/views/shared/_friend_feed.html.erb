@@ -1,5 +1,5 @@
 <% if @friends.any? %>
-    <ol class="friend_feed" style="padding-left:0px;">
+    <ol class="friend_feed" id="friend_feed_<%=@user.id%>" style="padding-left:0px;">
         <%= render partial: 'shared/friend', collection: @friends %>
     </ol>
     <%#= paginate @friends %>
