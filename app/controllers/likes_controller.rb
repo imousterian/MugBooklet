@@ -9,11 +9,11 @@ class LikesController < ApplicationController
     end
 
     def selected_index
-        @post = Post.find_by(:id => params[:id])
+        @post = Post.find_by(:id => params[:pid])
         @likes = @post.likes
-        # respond_to do |format|
-        #     format.js
-        # end
+        respond_to do |format|
+            format.js
+        end
     end
 
     def destroy
@@ -23,10 +23,5 @@ class LikesController < ApplicationController
             format.js
         end
     end
-
-    private
-        def like_params
-            params.require(:like).permit(:like, :user_id, :post_id)
-        end
 
 end

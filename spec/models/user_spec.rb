@@ -18,6 +18,7 @@ RSpec.describe User, :type => :model do
     it {should respond_to(:friends_of_friends)}
     it {should respond_to(:been_rejected_by)}
     it {should respond_to(:been_approved_by)}
+    it {should respond_to(:liking?)}
 
     it {should be_valid}
 
@@ -56,7 +57,6 @@ RSpec.describe User, :type => :model do
     end
 
     describe "user's suggested friends" do
-
         describe "when user already has friends" do
             let(:friend1) {FactoryGirl.create(:user)}
             let(:friend2) {FactoryGirl.create(:user)}
@@ -72,30 +72,37 @@ RSpec.describe User, :type => :model do
                 friend1.friendships.create!(friend_id: friend4.id, status: 'accepted')
             end
 
-            subject{@user}
-
             its(:all_friends) {should include(friend1)}
             its(:friend_ids) {should include(friend1.id)}
             its(:friends_of_friends) {should include(friend2.id, friend3.id, friend4.id)}
-            its(:suggested_friends) {should include(friend2, friend3, friend4)}
-            its(:suggested_friends) {should_not include(friend5)}
 
+            describe "and has no pending friends" do
+                its(:suggested_friends) {should include(friend2, friend3, friend4)}
+                its(:suggested_friends) {should_not include(friend5)}
+            end
+
+            describe "and has pending friends" do
+                let(:requested) {FactoryGirl.create(:user)}
+                before do
+                    @user.request_friendship(requested)
+                end
+                its(:suggested_friends) {should_not include(requested)}
+            end
         end
 
         describe "when user has no friends" do
+
             let(:friend1) {FactoryGirl.create(:user)}
             let!(:friend2) {FactoryGirl.create(:user)}
-
             before do
                 @user.save
                 @user.friendships.create!(friend_id: friend1.id, status: 'accepted')
             end
 
             subject {@user}
-            its(:suggested_friends) {should_not be_empty}
-            its(:suggested_friends) {should include(friend2)}
-        end
-
+                its(:suggested_friends) {should_not be_empty}
+                its(:suggested_friends) {should include(friend2)}
+            end
     end
 
     describe "user friend's posts" do
@@ -111,6 +118,23 @@ RSpec.describe User, :type => :model do
             new_friend.posts.each do |p|
                 should include(p)
             end
+        end
+    end
+
+    describe "user's likes" do
+        let!(:post_to_like) {FactoryGirl.create(:post, user: FactoryGirl.create(:user))}
+        before do
+            @user.save
+            @user.like(post_to_like)
+        end
+        describe "when user likes a post" do
+            its(:likes) {should include(@user.liking?(post_to_like))}
+        end
+        describe "when user does not like a post" do
+            before do
+                @user.unlike(post_to_like)
+            end
+            its(:likes) {should_not include(@user.liking?(post_to_like))}
         end
     end
 

@@ -1,18 +1,12 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+    include ApplicationHelper
     protect_from_forgery with: :exception
     before_action :configure_permitted_params, if: :devise_controller?
     before_filter :authenticate_user!, except: [:create_guest_user]
     before_action :show_current_friends, :show_potential_friends, :show_pending_friends
 
-    def authenticate_user!
-        if user_signed_in?
-            super
-        else
-            redirect_to root_url
-        end
-    end
 
     def create_guest_user
         u = User.new { |user| user.guest = true }

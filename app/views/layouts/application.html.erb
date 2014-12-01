@@ -12,7 +12,9 @@
 <body data-no-turbolink = "true">
     <%= render 'layouts/header' %>
     <div class="container">
-        <%= render "layouts/layout_messages" %>
+        <div class="error_explanation">
+            <%= render "layouts/layout_messages" %>
+        </div>
         <%= yield %>
 
 

@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
     resources :friendships, only: [:create, :destroy, :update]
     resources :posts, only: [:create, :destroy, :edit]
-    resources :comments
+    resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
-    match '/likes/:id', to: "likes#selected_index", via: 'get', as: :showlikes
+    match '/likes/:pid', to: "likes#selected_index", via: 'get', as: :showlikes
 
     # match '/add/:id', to: "comments#add", via: 'get', as: :add
 

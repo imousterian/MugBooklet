@@ -22,4 +22,13 @@ $(function()
         $.ajax($(this).data('url'))
             .done(function(){ })
     });
+    removeErrorExplanation();
 });
+
+function removeErrorExplanation(){
+    setInterval(function(){
+        $('.error_explanation').slideUp('slow', function(){
+            $(this).remove();
+        });
+    }, 3500);
+};

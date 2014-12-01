@@ -12,23 +12,19 @@ feature 'Home page' do
 
         expect(page).to have_css("#sign_up_button")
 
-        expect(page).to have_link("Sign up now!")
-
     end
 
     scenario "When user signs up successfully" do
 
         visit root_path
-        click_link "Sign up"
-        expect(page).to have_title(full_title('Sign up'))
-
-        fill_in "user_name", with: "fidel"
-        fill_in "user_email", with: "fidel@fidel.com"
-        fill_in "user_password", with: "fidelfidel"
-        fill_in "user_password_confirmation", with: "fidelfidel"
+        within("form#new_user.new_user") do
+            fill_in "user_name", with: "fidel"
+            fill_in "user_email", with: "fidel@fidel.com"
+            fill_in "user_password", with: "fidelfidel"
+            fill_in "user_password_confirmation", with: "fidelfidel"
+        end
         click_button "Sign up"
-        expect(page).to have_text("Welcome! You have signed up successfully.")
-        expect(page).to have_text("Logged in as fidel@fidel.com")
+        expect(page).to have_text("fidel Welcome! You have signed up successfully.")
     end
 
     scenario "When user is signed in" do

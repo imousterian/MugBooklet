@@ -11,7 +11,7 @@
     <div id="hover_item_<%=feed_item.id%>" class="fixed" data-remote="true"></div>
     <div class="commenter_counter">
         <div data-remote="true" id="index_<%=feed_item.id%>" data-idd="<%= feed_item.id %>"
-                class="hover_over" data-url="<%= url_for(action: 'selected_index', controller: 'likes', id: feed_item.id) %>">
+                class="hover_over" data-url="<%= url_for(action: 'selected_index', controller: 'likes', pid: feed_item.id) %>">
             <%= image_tag("FB-ThumbsUp_29.png", height: '15', class: "menu_icon") %>&nbsp;<%= pluralize(feed_item.likes.count, 'person') %>
         </div>
         <div style="float:left;">&nbsp;like this</div>

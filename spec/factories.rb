@@ -9,4 +9,17 @@ FactoryGirl.define do
         content "Lorem ipsum"
         user
     end
+    factory :invalid_post, parent: :post do
+        content nil
+    end
+
+    factory :comment do
+        body "Lorem ipstum"
+        user
+    end
+
+    factory :invalid_comment, parent: :comment do
+        body nil
+    end
+
 end

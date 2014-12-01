@@ -1,3 +1,7 @@
 $(".user_post_form").html("<%= escape_javascript(render partial: 'shared/post_form', locals: {:feed_item => @post}) %>");
-
-$(".user_post_feed").prepend("<%= escape_javascript(render partial: 'posts/post', locals: {:post => @post}) %>");
+<% if @post.errors.any? %>
+    $(".error_explanation").append("<%= escape_javascript(render partial: 'layouts/layout_messages') %>");
+    removeErrorExplanation();
+<% else %>
+    $(".user_post_feed").prepend("<%= escape_javascript(render partial: 'posts/post', locals: {:post => @post}) %>");
+<% end %>

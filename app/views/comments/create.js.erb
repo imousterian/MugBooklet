@@ -1,3 +1,7 @@
 $("#comment_form_<%= @post.id %>").html("<%= escape_javascript(render partial: 'shared/comment_form', locals: {:feed_item => @post}) %>");
-
-$("#comment_feed_<%= @post.id %>").append("<%= escape_javascript(render partial: 'comments/comment', locals: {:comment => @comment}) %>");
+<% if @comment.errors.any? %>
+    $(".error_explanation").append("<%= escape_javascript(render partial: 'layouts/layout_messages') %>");
+    removeErrorExplanation();
+<% else %>
+    $("#comment_feed_<%= @post.id %>").append("<%= escape_javascript(render partial: 'comments/comment', locals: {:comment => @comment}) %>");
+<% end %>

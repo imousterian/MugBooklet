@@ -1,4 +1,3 @@
-<%#= form_for(current_user.friendships.find_by(friend_id: pending_friend.id), remote: true) do |f| %>
 <%= form_for(Friendship.where(friend_id: current_user, user_id: pending_friend.id).first, remote: true) do |f| %>
     <%= f.hidden_field :user_id %>
     <%= f.submit "Accept", class: "btn btn-xs btn-primary" %>

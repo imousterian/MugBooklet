@@ -18,8 +18,8 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <!-- <li><%#= link_to "Contact", contact_path %></li> -->
                 <% if user_signed_in? %>
+                <li><%= link_to "Contact", contact_path %></li>
                     <li><%= link_to "Home", root_path %></li>
                     <li><%= link_to "Friends", "#my-modal", "data-toggle" => "modal" %></li>
                     <li class="dropdown">

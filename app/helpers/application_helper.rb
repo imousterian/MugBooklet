@@ -20,4 +20,8 @@ module ApplicationHelper
     def devise_mapping
         @devise_mapping ||= Devise.mappings[:user]
     end
+
+    def errors_helper(thing, symbol)
+        thing.errors[symbol].map{|i| i}.join(" ")
+    end
 end

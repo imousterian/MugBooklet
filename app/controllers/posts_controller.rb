@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
     def create
         @post = current_user.posts.build(post_params)
         respond_to do |format|
@@ -6,16 +7,10 @@ class PostsController < ApplicationController
                 format.html { redirect_to root_url }
                 format.js
             else
-                render 'static_pages/home'
+                flash.now[:alert] = "Problem! #{errors_helper(@post, :content)}"
+                format.js
             end
         end
-        # if @post.save
-        #     flash[:success] = "Micropost created!"
-        #     redirect_to root_url
-        # else
-        #     @feed_items = []
-        #     render 'static_pages/home'
-        # end
     end
 
     private
